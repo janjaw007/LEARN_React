@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-const conainterStyle = {
+const containerStyle = {
   display: "flex",
   alignItems: "center",
   gap: "16px",
@@ -11,7 +11,7 @@ const starContainerStyle = {
   display: "flex",
 };
 
-StarRating.PropTypes = {
+StarRating.PropsTypes = {
   maxRating: PropTypes.number,
   defaultRating: PropTypes.number,
   color: PropTypes.string,
@@ -44,21 +44,20 @@ export default function StarRating({
     color,
     fontSize: `${size / 1.5}px`,
   };
+
   return (
-    <div style={conainterStyle} className={className}>
+    <div style={containerStyle} className={className}>
       <div style={starContainerStyle}>
         {Array.from({ length: maxRating }, (_, i) => (
-          <span>
-            <Star
-              full={tempRating ? tempRating >= i + 1 : rating >= i + 1}
-              key={i}
-              onRate={() => handleRating(i + 1)}
-              onHoverIn={() => setTempRating(i + 1)}
-              onHoverOut={() => setTempRating(0)}
-              color={color}
-              size={size}
-            />
-          </span>
+          <Star
+            key={i}
+            full={tempRating ? tempRating >= i + 1 : rating >= i + 1}
+            onRate={() => handleRating(i + 1)}
+            onHoverIn={() => setTempRating(i + 1)}
+            onHoverOut={() => setTempRating(0)}
+            color={color}
+            size={size}
+          />
         ))}
       </div>
       <p style={textStyle}>
